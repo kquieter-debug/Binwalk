@@ -1,9 +1,10 @@
 name: Release Build
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+#  push:
+#    tags:
+#      - 'v*'
 jobs:
   release:
     name: Release - ${{ matrix.platform.os-name }}
@@ -17,14 +18,6 @@ jobs:
           - os-name: Linux-aarch64
             runs-on: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
-
-          - os-name: macOS-x86_64
-            runs-on: macOS-latest
-            target: x86_64-apple-darwin
-
-          - os-name: macOS-aarch64
-            runs-on: macOS-latest
-            target: aarch64-apple-darwin
 
           - os-name: Windows-x86_64
             runs-on: windows-latest
